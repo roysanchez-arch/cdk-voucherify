@@ -1,4 +1,31 @@
 {
+ "Parameters": {
+  "GithubConfigrepoownerParameter85AFD68C": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cuida/voucherify/monitor/github/repo_owner"
+  },
+  "GithubConfigreponameParameterD18CC204": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cuida/voucherify/monitor/github/repo_name"
+  },
+  "GithubConfigworkflowfileParameter68EC4971": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cuida/voucherify/monitor/github/workflow_file"
+  },
+  "GithubConfigbranchParameter9570AF1C": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cuida/voucherify/monitor/github/branch"
+  },
+  "GithubConfigtokenParameter25E9041E": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cuida/voucherify/monitor/github/token"
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
  "Resources": {
   "GithubDispatchLambdaServiceRole825EC223": {
    "Type": "AWS::IAM::Role",
@@ -41,15 +68,25 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "80bb4273bc1edc7288a434d8417fc5d7b533734f19abb0313509157c8a119dad.zip"
+     "S3Key": "a0c7dd23fc17ae166d10cfd1fd2169d471edeab0ebee5174e25af46a8660eb1c.zip"
     },
     "Environment": {
      "Variables": {
-      "GITHUB_TOKEN": "",
-      "REPO_OWNER": "TU_OWNER",
-      "REPO_NAME": "TU_REPO",
-      "WORKFLOW_FILE": "cypress-monitor.yml",
-      "BRANCH": "main"
+      "REPO_OWNER": {
+       "Ref": "GithubConfigrepoownerParameter85AFD68C"
+      },
+      "REPO_NAME": {
+       "Ref": "GithubConfigreponameParameterD18CC204"
+      },
+      "WORKFLOW_FILE": {
+       "Ref": "GithubConfigworkflowfileParameter68EC4971"
+      },
+      "BRANCH": {
+       "Ref": "GithubConfigbranchParameter9570AF1C"
+      },
+      "GITHUB_TOKEN": {
+       "Ref": "GithubConfigtokenParameter25E9041E"
+      }
      }
     },
     "Handler": "index.handler",
@@ -67,7 +104,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "GithubLambdaStack/GithubDispatchLambda/Resource",
-    "aws:asset:path": "D:\\ws\\repositorios\\cdk-voucherify",
+    "aws:asset:path": "asset.a0c7dd23fc17ae166d10cfd1fd2169d471edeab0ebee5174e25af46a8660eb1c",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -75,8 +112,8 @@
   "ScheduleRuleDA5BD877": {
    "Type": "AWS::Events::Rule",
    "Properties": {
-    "ScheduleExpression": "rate(1 minute)",
-    "State": "ENABLED",
+    "ScheduleExpression": "rate(10 minutes)",
+    "State": "DISABLED",
     "Targets": [
      {
       "Arn": {
@@ -118,7 +155,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/z3OPQ6CQBBA4bPYDyOBxlZILI2BA5ARBjL8DAmzi8Vm725QY/W6Ly/DLL9geqKXJW03JbM8MdSO2gnoZU2YaXl21Oja8Wh4/+TmtXWyKggtGKp1Zih7PRrB8obM2Blej4DlWPh2YleQMXw1DGWvf6Ts9cHbImayagTeWZ1hqPyP9TPHCB+tdjSIDhGOHRztvGcpZimmp9FEks2rk4Wx+vYN13HMLNsAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/z3OMY7CMBCF4bPQTwbWaWgBiXK1CgeIBmdATuKx5LGhsHz3lQFR/d33nkHT73G3oad2dlq61V2xXBLZBU43+aNInhNHGFhDjpaBnjqWlfx1olHCxLPi7yvnLDa5IODIYxnCyk1oraD9SKqcFA8toD0es104HUkZ3hqW002+SBvn6J2qC1KBHyxJsQz5w+aVa4WXdkl0d3Kv0O7grNuHMWh+cLeZ1bkuZknOMw7v/gMwqqUE8QAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "GithubLambdaStack/CDKMetadata/Default"
@@ -390,13 +427,6 @@
      ]
     }
    ]
-  }
- },
- "Parameters": {
-  "BootstrapVersion": {
-   "Type": "AWS::SSM::Parameter::Value<String>",
-   "Default": "/cdk-bootstrap/hnb659fds/version",
-   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
   }
  },
  "Rules": {

@@ -1,30 +1,30 @@
 {
   "version": "48.0.0",
   "files": {
-    "80bb4273bc1edc7288a434d8417fc5d7b533734f19abb0313509157c8a119dad": {
+    "a0c7dd23fc17ae166d10cfd1fd2169d471edeab0ebee5174e25af46a8660eb1c": {
       "displayName": "GithubDispatchLambda/Code",
       "source": {
-        "path": "D:\\ws\\repositorios\\cdk-voucherify",
+        "path": "asset.a0c7dd23fc17ae166d10cfd1fd2169d471edeab0ebee5174e25af46a8660eb1c",
         "packaging": "zip"
       },
       "destinations": {
-        "current_account-current_region-842bd841": {
+        "current_account-current_region-3b4109e6": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "80bb4273bc1edc7288a434d8417fc5d7b533734f19abb0313509157c8a119dad.zip",
+          "objectKey": "a0c7dd23fc17ae166d10cfd1fd2169d471edeab0ebee5174e25af46a8660eb1c.zip",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
     },
-    "b06ad9903c1d88483c864d8d168d565f1989cc57a97c7df8037c144b85d3db42": {
+    "954c6a1b19824cf8145be83f714aee88ff8721d4c39d3479d0e48337bc3c42ac": {
       "displayName": "GithubLambdaStack Template",
       "source": {
         "path": "GithubLambdaStack.template.json",
         "packaging": "file"
       },
       "destinations": {
-        "current_account-current_region-a5c1341f": {
+        "current_account-current_region-fb8bf42f": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "b06ad9903c1d88483c864d8d168d565f1989cc57a97c7df8037c144b85d3db42.json",
+          "objectKey": "954c6a1b19824cf8145be83f714aee88ff8721d4c39d3479d0e48337bc3c42ac.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

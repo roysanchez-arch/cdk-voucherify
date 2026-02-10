@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b06ad9903c1d88483c864d8d168d565f1989cc57a97c7df8037c144b85d3db42.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/954c6a1b19824cf8145be83f714aee88ff8721d4c39d3479d0e48337bc3c42ac.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -39,31 +39,65 @@
             "type": "aws:cdk:warning",
             "data": "If you are relying on AWS SDK v2 to be present in the Lambda environment already, please explicitly configure a NodeJS runtime of Node 16 or lower. [ack: @aws-cdk/aws-lambda-nodejs:sdkV2NotInRuntime]",
             "trace": [
-              "Annotations.addMessage (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2066)",
-              "Annotations.addWarningV2 (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:984)",
-              "new Bundling (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\bundling.js:1:4190)",
-              "Function.bundle (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\bundling.js:1:1141)",
-              "new NodejsFunction (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\function.js:1:2443)",
-              "new GithubLambdaStack (D:\\ws\\repositorios\\cdk-voucherify\\lib\\github-lambda-stack.js:45:32)",
-              "Object.<anonymous> (D:\\ws\\repositorios\\cdk-voucherify\\bin\\app.ts:6:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1521:14)",
-              "Module.m._compile (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\index.ts:1618:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1623:10)",
-              "Object.require.extensions.<computed> [as .ts] (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\index.ts:1621:12)",
-              "Module.load (node:internal/modules/cjs/loader:1266:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:1091:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)",
-              "phase4 (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:649:14)",
-              "bootstrap (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:95:10)",
-              "main (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:55:10)",
-              "Object.<anonymous> (D:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:800:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1521:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1623:10)",
-              "Module.load (node:internal/modules/cjs/loader:1266:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:1091:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)",
-              "node:internal/main/run_main_module:28:49"
+              "Annotations.addMessage (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2066)",
+              "Annotations.addWarningV2 (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:984)",
+              "new Bundling (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\bundling.js:1:4190)",
+              "Function.bundle (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\bundling.js:1:1141)",
+              "new NodejsFunction (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\aws-cdk-lib\\aws-lambda-nodejs\\lib\\function.js:1:2443)",
+              "new GithubLambdaStack (C:\\ws\\repositorios\\cdk-voucherify\\stack\\github-lambda-stack.ts:19:28)",
+              "Object.<anonymous> (C:\\ws\\repositorios\\cdk-voucherify\\bin\\app.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1706:14)",
+              "Module.m._compile (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\index.ts:1618:23)",
+              "node:internal/modules/cjs/loader:1839:10",
+              "Object.require.extensions.<computed> [as .ts] (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1441:32)",
+              "Function._load (node:internal/modules/cjs/loader:1263:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:328:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:237:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)",
+              "phase4 (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:649:14)",
+              "bootstrap (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:95:10)",
+              "main (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:55:10)",
+              "Object.<anonymous> (C:\\ws\\repositorios\\cdk-voucherify\\node_modules\\ts-node\\src\\bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1706:14)",
+              "Object.<anonymous> (node:internal/modules/cjs/loader:1839:10)",
+              "Module.load (node:internal/modules/cjs/loader:1441:32)",
+              "Function._load (node:internal/modules/cjs/loader:1263:12)",
+              "TracingChannel.traceSync (node:diagnostics_channel:328:14)",
+              "wrapModuleLoad (node:internal/modules/cjs/loader:237:24)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)",
+              "node:internal/main/run_main_module:36:49"
             ]
+          }
+        ],
+        "/GithubLambdaStack/GithubConfig/repo_owner.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubConfigrepoownerParameter85AFD68C"
+          }
+        ],
+        "/GithubLambdaStack/GithubConfig/repo_name.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubConfigreponameParameterD18CC204"
+          }
+        ],
+        "/GithubLambdaStack/GithubConfig/workflow_file.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubConfigworkflowfileParameter68EC4971"
+          }
+        ],
+        "/GithubLambdaStack/GithubConfig/branch.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubConfigbranchParameter9570AF1C"
+          }
+        ],
+        "/GithubLambdaStack/GithubConfig/token.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubConfigtokenParameter25E9041E"
           }
         ],
         "/GithubLambdaStack/GithubDispatchLambda/ServiceRole/Resource": [
