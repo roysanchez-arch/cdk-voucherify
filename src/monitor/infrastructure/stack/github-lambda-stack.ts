@@ -5,7 +5,7 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as events from "aws-cdk-lib/aws-events";
 import * as targets from "aws-cdk-lib/aws-events-targets";
 import * as path from "path";
-import { GithubConfig } from "./github-lambda-stack-config-env";
+import { GithubConfig } from "./config";
 
 
 export class GithubLambdaStack extends cdk.Stack {
@@ -17,7 +17,7 @@ export class GithubLambdaStack extends cdk.Stack {
     });
 
     const lambdaFunction = new lambdaNodejs.NodejsFunction(this, "GithubDispatchLambda", {
-      entry: path.join(process.cwd(),"src/infrastructure/lambda/handler.ts"),
+      entry: path.join(process.cwd(),"src/execute-monitoring/infrastructure/lambda/handler.ts"),
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_20_X,
       bundling: { minify: true, externalModules: ["aws-sdk"] },
