@@ -1,0 +1,34 @@
+{
+  "name": "lambda-cdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.160",
+    "@types/axios": "^0.9.36",
+    "@types/node": "^25.0.10",
+    "aws-cdk": "^2.1102.0",
+    "aws-cdk-lib": "^2.236.0",
+    "constructs": "^10.4.5",
+    "esbuild": "^0.27.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.975.0",
+    "@aws-sdk/util-dynamodb": "^3.975.0",
+    "@types/uuid": "^10.0.0",
+    "axios": "^1.13.5",
+    "dotenv": "^17.2.4",
+    "uuid": "^13.0.0"
+  }
+}
