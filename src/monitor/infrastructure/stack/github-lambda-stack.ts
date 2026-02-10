@@ -17,7 +17,7 @@ export class GithubLambdaStack extends cdk.Stack {
     });
 
     const lambdaFunction = new lambdaNodejs.NodejsFunction(this, "GithubDispatchLambda", {
-      entry: path.join(process.cwd(),"src/execute-monitoring/infrastructure/lambda/handler.ts"),
+      entry: path.join(process.cwd(),"src/monitor/infrastructure/lambda/handler.ts"),
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_20_X,
       bundling: { minify: true, externalModules: ["aws-sdk"] },
@@ -33,8 +33,8 @@ export class GithubLambdaStack extends cdk.Stack {
 
     // EventBridge cron
     const rule = new events.Rule(this, "ScheduleRule", {
-      schedule: events.Schedule.expression("rate(10 minutes)"),
-      enabled: false,
+      schedule: events.Schedule.expression("rate(20 minutes)"),
+      enabled: true,
     });
 
     rule.addTarget(new targets.LambdaFunction(lambdaFunction));
