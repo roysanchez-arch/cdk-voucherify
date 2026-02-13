@@ -5,7 +5,7 @@ import {
   QueryCommand
 } from "@aws-sdk/lib-dynamodb";
 import { Purchase } from "../../domain/model/Purchase";
-import { PurchaseRepository } from "../../domain/port/PurchaseRepository";
+import { PurchaseRepository } from "../../domain/repository/PurchaseRepository";
 
 export class DynamoPurchaseRepository implements PurchaseRepository {
   private readonly tableName = process.env.PURCHASE_TABLE!;
@@ -32,7 +32,15 @@ export class DynamoPurchaseRepository implements PurchaseRepository {
 
     const item = result.Items[0];
 
-    return new Purchase(item.id, item.timestamp);
+    return new Purchase(
+      item.id,
+      item.correlationId,
+      item.triggerPercentage,
+      item.timestamp,
+      item.createdAt,
+      item.purchaseType,
+      item.status
+    );
   }
 
   async save(purchase: Purchase): Promise<void> {
@@ -43,7 +51,12 @@ export class DynamoPurchaseRepository implements PurchaseRepository {
           pk: "PURCHASE",
           sk: purchase.timestamp,
           id: purchase.id,
-          timestamp: purchase.timestamp
+          correlationId: purchase.correlationId,
+          voucherifyPercentage: purchase.voucherifyPercentage,
+          timestamp: purchase.timestamp,
+          createdAt: purchase.createdAt,
+          purchaseType: purchase.purchaseType,
+          status: purchase.status
         }
       })
     );

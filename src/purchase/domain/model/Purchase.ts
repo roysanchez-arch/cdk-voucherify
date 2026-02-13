@@ -1,19 +1,35 @@
-// src/domain/purchase/purchaseEntity.ts
+// domain/model/Purchase.ts
+
+export type PurchaseType = "AUTOMATICO";
+export type PurchaseStatus = "SUCCESS" | "SKIPPED";
 
 export class Purchase {
-  /**
-   * @param id Identificador único de la compra (por ejemplo 'global' si es una sola cuenta)
-   * @param timestamp Timestamp en milisegundos de cuándo se realizó la compra
-   * @param value Valor que se compró (opcional, útil para tracking)
-   */
   constructor(
-    public id: string,
-    public timestamp: number,
-    public value?: number
+    public readonly id: string,
+    public readonly correlationId: string,
+    public readonly voucherifyPercentage: number,
+    public readonly timestamp: number,
+    public readonly createdAt: string,
+    public readonly purchaseType: PurchaseType,
+    public readonly status: PurchaseStatus
   ) {}
 
-  // Puedes agregar métodos de utilidad en la entidad si quieres
-  isWithinLastMinute(referenceTime: number = Date.now()): boolean {
-    return referenceTime - this.timestamp < 60_000; // 60 segundos
+  static create(params: {
+    id: string;
+    correlationId: string;
+    voucherifyPercentage: number;
+    purchaseType: PurchaseType;
+  }): Purchase {
+    const now = Date.now();
+
+    return new Purchase(
+      params.id,
+      params.correlationId,
+      params.voucherifyPercentage,
+      now,
+      new Date(now).toISOString(),
+      params.purchaseType,
+      "SUCCESS"
+    );
   }
 }

@@ -1,38 +1,43 @@
-import { Purchase } from "../domain/model/Purchase";
-import { PurchasePolicy } from "../domain/model/PurchasePolicy";
-import { PurchaseRepository } from "../domain/port/PurchaseRepository";
+// application/usecase/PurchaseCreditUseCase.ts
 
+import { randomUUID } from "crypto";
+import { Purchase } from "../domain/model/Purchase";
+import { PurchaseRepository } from "../domain/repository/PurchaseRepository";
 
 export class PurchaseCreditUseCase {
+  constructor(
+    private readonly repository: PurchaseRepository
+  ) {}
 
+  async execute(params: {
+    triggerPercentage: number;
+    correlationId: string;
+  }) {
 
-    constructor(
-        private readonly repository: PurchaseRepository
-    ) {}
-
-  async execute(validatedValue: number) {
     const now = Date.now();
-
     const lastPurchase = await this.repository.getLastPurchase();
 
-    const canPurchase = PurchasePolicy.canPurchase(
-      lastPurchase?.timestamp ?? null,
-      now
-    );
+    const FIVE_MINUTES = 5 * 60 * 1000;
 
-    if (!canPurchase) {
+    if (lastPurchase && (now - lastPurchase.timestamp) < FIVE_MINUTES) {
       return {
         status: "SKIPPED",
         reason: "Purchase already executed within last 5 minutes"
       };
     }
 
-    const purchase = new Purchase(crypto.randomUUID(), now);
+    const purchase = Purchase.create({
+      id: randomUUID(),
+      correlationId: params.correlationId,
+      triggerPercentage: params.triggerPercentage,
+      purchaseType: "AUTOMATICO"
+    });
+
     await this.repository.save(purchase);
 
     return {
-      status: "SUCCESS"
+      status: "SUCCESS",
+      id: purchase.id
     };
   }
-
 }
