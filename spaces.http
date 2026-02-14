@@ -1,0 +1,6 @@
+POST  https://ys8ygl4on4.execute-api.us-east-2.amazonaws.com/prod/buy
+Content-Type: application/json
+
+{ "validatedValue": 95 }
+
+###

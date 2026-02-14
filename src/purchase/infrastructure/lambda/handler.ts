@@ -6,8 +6,10 @@ export const handler = async (event: any) => {
   try {
     // Cypress debe enviar:
     // { validatedValue: number }
+    console.log(JSON.stringify(event, null, 2));
 
-    const validatedValue = event.validatedValue;
+    const body = JSON.parse(event.body);
+    const validatedValue = body.validatedValue;
 
     if (!validatedValue) {
       return {

@@ -25,7 +25,7 @@ export class PurchaseStack extends cdk.Stack {
       bundling: { minify: true, externalModules: ["aws-sdk"] },
       timeout: cdk.Duration.seconds(30),
       environment: {
-        PURCHASES_TABLE: purchaseTable.tableName
+        PURCHASE_TABLE: purchaseTable.tableName
       }
     });
 

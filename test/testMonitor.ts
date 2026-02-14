@@ -1,4 +1,4 @@
-import { handler } from "../src/infrastructure/lambda/handler";
+import { handler } from "../src/monitor/infrastructure/lambda/handler";
 import 'dotenv/config';
 
 (async () => {
